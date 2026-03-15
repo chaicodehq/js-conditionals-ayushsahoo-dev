@@ -57,7 +57,7 @@ export function calculateShipping(weight, country, orderTotal) {
     return 25;
   }
   else if(weight > 5){
-    return 35;
+    return 40;
   }
 }
 }
