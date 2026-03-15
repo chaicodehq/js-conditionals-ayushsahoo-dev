@@ -28,7 +28,57 @@
  * @param {number} billAmount - The bill amount in dollars
  * @param {number} serviceRating - Service rating from 1 to 5
  * @returns {{ tipPercentage: number, tipAmount: number, totalAmount: number } | null}
- */
-export function calculateTip(billAmount, serviceRating) {
-  // Your code here
-}
+  */
+  export function calculateTip(billAmount, serviceRating) {
+    // Your code here
+    if (billAmount <= 0 ){
+      return null;
+    }
+    if (!Number.isInteger(serviceRating)  || serviceRating < 1  || serviceRating  >5){
+      return null;
+    }
+
+    if(serviceRating ===1){
+      const tip = 0.05 * billAmount;
+      return{
+        tipPercentage: 5,
+        tipAmount:  Number(tip.toFixed(2)),
+        totalAmount:  Number((tip + billAmount).toFixed(2))
+      }
+    }
+      else if(serviceRating === 2){
+        const tip = billAmount * 0.10
+        return {
+          tipPercentage:10,
+          tipAmount:  Number(tip.toFixed(2)),
+          totalAmount: Number((tip + billAmount).toFixed(2))
+        }
+      }
+      else if(serviceRating === 3){
+        const tip = 0.15 * billAmount
+        return{
+          tipPercentage:15,
+          tipAmount: Number(tip.toFixed(2)),
+          totalAmount:  Number((tip + billAmount).toFixed(2))
+        }
+      }
+      else if(serviceRating === 4){
+        const tip = 0.20 * billAmount
+        return{
+          tipPercentage:20,
+          tipAmount: Number(tip.toFixed(2)),
+          totalAmount: Number((tip + billAmount).toFixed(2))
+        }
+      }
+        else{
+          const tip = 0.25 * billAmount
+          return{
+            tipPercentage:25,
+            tipAmount: Number(tip.toFixed(2)),
+            totalAmount: Number((tip + billAmount).toFixed(2))
+          }
+        }
+      
+    }
+
+

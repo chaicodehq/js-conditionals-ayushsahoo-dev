@@ -1,3 +1,4 @@
+
 /**
  * 🅿️ City Central Parking
  *
@@ -34,4 +35,33 @@
  */
 export function calculateParkingFee(hours, vehicleType) {
   // Your code here
+  if(hours <= 0 || vehicleType!=="car" && vehicleType !== "motorcycle" && vehicleType !== "bus"){
+    return -1;
+  }
+  const Totalhour=Math.ceil(hours);
+
+  let firstHourFee
+  let additionalhourFee
+  let maximum
+
+  if(vehicleType === "car"){
+    firstHourFee = 5
+    additionalhourFee = 3
+    maximum = 30
+  }
+  else if(vehicleType === "bus"){
+    firstHourFee = 10
+    additionalhourFee = 7
+    maximum = 60
+  }
+  else {
+    firstHourFee = 3
+    additionalhourFee = 2
+    maximum = 18
+  }
+
+  let fee = firstHourFee + ( Totalhour- 1) * additionalhourFee
+
+  fee = Math.min(maximum,fee);
+  return fee;
 }
